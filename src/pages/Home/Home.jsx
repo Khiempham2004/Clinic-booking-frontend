@@ -1,6 +1,6 @@
 import { Box, Container, Grid, Typography, Button, Card, CardContent, CardMedia } from '@mui/material';
-import Header from '../components/Header.jsx';
-import Footer from '../components/Footer.jsx';
+import Header from '../../components/common/Header.jsx';
+import Footer from '../../components/common/Footer.jsx';
 
 const Home = () => {
     const specialties = [

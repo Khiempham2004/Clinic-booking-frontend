@@ -5,12 +5,15 @@ import BookingForm from './pages/Booking/BookingForm.jsx';
 import Login from './pages/Auth/Login.jsx';
 import Register from './pages/Auth/Register.jsx'
 import UserLayout from './components/UserLayout.jsx';
-import AdminLayout from './components/AdminLayout.jsx';
-import Home from './pages/Home.jsx';
+import AdminLayout from './layouts/AdminLayout.jsx';
+import Home from './pages/Home/Home.jsx';
 import AdminDashboard from './pages/Admin/AdminDashboard.jsx';
 import AdminDoctors from './pages/Admin/AdminDoctors.jsx';
 import AdminAppointments from './pages/Admin/AdminAppointments.jsx';
 import AdminServices from './pages/Admin/AdminServices.jsx';
+import BookingTimeSlot from './components/booking/BookingTimeSlot.jsx';
+import BookingPage from './pages/Booking/BookingPage.jsx';
+import BookingSummary from './components/booking/BookingSummary.jsx';
 
 
 function App() {
@@ -20,12 +23,20 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<><Login /></>} />
         <Route path='/register' element={<><Register /></>} />
-        <Route path='/bookings' element={
-          <><BookingForm /></>
-        } />
+        <Route path='/booking' element={<><BookingPage /></>} />
+
+        {/* <Route path='/booking' element={
+          <>
+            <BookingTimeSlot />
+            <BookingForm />
+          </>
+        } /> */}
+
 
         {/* USER */}
         <Route path='/user' element={<UserLayout />} />
+
+
         {/* ADMIN */}
         <Route path='/admin' element={<AdminLayout />}>
 
