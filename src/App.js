@@ -1,20 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import BookingForm from './pages/Booking/BookingForm.jsx';
 import Login from './pages/Auth/Login.jsx';
-import Register from './pages/Auth/Register.jsx'
-import UserLayout from './components/UserLayout.jsx';
+import Register from './pages/Auth/Register.jsx';
 import AdminLayout from './layouts/AdminLayout.jsx';
 import Home from './pages/Home/Home.jsx';
 import AdminDashboard from './pages/Admin/AdminDashboard.jsx';
 import AdminDoctors from './pages/Admin/AdminDoctors.jsx';
 import AdminAppointments from './pages/Admin/AdminAppointments.jsx';
 import AdminServices from './pages/Admin/AdminServices.jsx';
-import BookingTimeSlot from './components/booking/BookingTimeSlot.jsx';
 import BookingPage from './pages/Booking/BookingPage.jsx';
-import BookingSummary from './components/booking/BookingSummary.jsx';
-
+import PrivateRoute from './routes/PrivateRoute.jsx';
+import AdminRoutes from './routes/AdminRoute.jsx';
+import PatientLayout from './layouts/PatientLayout.jsx';
+import PatientBookingList from './pages/Patient/PatientBookingList.jsx';
+import PatientProfile from './pages/Patient/PatientProfile.jsx';
+import PatientDoctors from './pages/Patient/PatientDoctors.jsx';
+import PatientHome from './pages/Patient/PatientHome.jsx';
 
 function App() {
   return (
@@ -23,31 +25,35 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<><Login /></>} />
         <Route path='/register' element={<><Register /></>} />
-        <Route path='/booking' element={<><BookingPage /></>} />
-
-        {/* <Route path='/booking' element={
-          <>
-            <BookingTimeSlot />
-            <BookingForm />
-          </>
-        } /> */}
-
-
-        {/* USER */}
-        <Route path='/user' element={<UserLayout />} />
-
+        <Route path='/booking' element={
+          <PrivateRoute>
+            <BookingPage />
+          </PrivateRoute>}
+        />
 
         {/* ADMIN */}
-        <Route path='/admin' element={<AdminLayout />}>
-
+        <Route path='/admin' element={
+          <AdminRoutes roles={["admin"]}>
+            <AdminLayout />
+          </AdminRoutes>
+        }>
           <Route index element={<AdminDashboard />} />
-
           <Route path='doctors' element={<AdminDoctors />} />
           <Route path='services' element={<AdminServices />} />
           <Route path='appointments' element={<AdminAppointments />} />
-
         </Route>
 
+        {/* PATIENT (bệnh nhân) */}
+        <Route path='/patient' element={
+          <PrivateRoute roles={["patient"]}>
+            <PatientLayout />
+          </PrivateRoute>
+        }>
+          <Route index element={<PatientHome />} />
+          <Route path='doctors' element={<PatientDoctors />} />
+          <Route path='bookings' element={<PatientBookingList />} />
+          <Route path='profile' element={<PatientProfile />} />
+        </Route>
 
 
       </Routes>
