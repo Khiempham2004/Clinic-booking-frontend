@@ -3,7 +3,7 @@ import React from 'react';
 const AdminAppointments = () => {
   return (
     <div>
-      <h4 className='text-xl font-bold'>Admin Appointments</h4>
+      <h4 className='text-xl font-bold'>Appointments Management</h4>
     </div>
   );
 }

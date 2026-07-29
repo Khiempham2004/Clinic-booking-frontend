@@ -1,7 +1,7 @@
 import { message } from 'antd';
 import React, { useEffect, useState } from 'react';
-import patientService, { getAllPatient } from '../../services/patientService';
-import doctorService, { getAllDoctor } from '../../services/doctorService';
+import patientService from '../../services/patientService';
+import doctorService from '../../services/doctorService';
 import appointmentService from '../../services/appointmentService';
 import medicalService from '../../services/medicalService';
 
@@ -15,7 +15,7 @@ const AdminDashboard = () => {
     const [appointments, setAppointment] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const loadPatient = async () => {
+    const loadDashboard = async () => {
         try {
             setLoading(true);
             const [
@@ -36,17 +36,15 @@ const AdminDashboard = () => {
                 services: services.length,
                 appointments: appointments.length
             });
-
             message.success("Đã lấy danh sách bệnh nhân thành công")
         } catch (error) {
             console.log(error);
-            // message.error('Không lấy được danh sách bệnh nhân')
         } finally {
             setLoading(false);
         }
     }
     useEffect(() => {
-        loadPatient();
+        loadDashboard();
     }, []);
 
     return (
@@ -54,7 +52,7 @@ const AdminDashboard = () => {
             <div className='font-bold text-xl'>
                 <h1>Admin Dashboard</h1>
             </div>
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-4 gap-6 top-4">
                 <div className='bg-blue-500 rounded-xl p-6 text-white shadow'>
                     <h2 className='text-lg'>Doctors</h2>
                     <p className='text-4xl font-bold mt-3'>{dashboard.doctors}</p>
@@ -81,7 +79,6 @@ const AdminDashboard = () => {
                         Recent Appointments
                     </h2>
                 </div>
-
                 <table className="w-full">
                     <thead className="bg-gray-100">
                         <tr>

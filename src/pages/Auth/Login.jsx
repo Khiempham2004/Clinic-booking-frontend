@@ -55,10 +55,8 @@ const Login = () => {
             } else {
                 navigate("/")
             }
-            message.success('Đăng nhập thành công' , 5)
+            // message.success('Đăng nhập thành công' , 5)
         } catch (err) {
-            console.error(err);
-            message.error('Đăng nhập thất bại' , 5)
             setErrors({ submit: 'Đăng nhập thất bại. Kiểm tra thông tin và thử lại.' });
         } finally {
             setLoading(false);

@@ -8,6 +8,10 @@ import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PersonIcon from "@mui/icons-material/Person";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
+import GroupIcon from "@mui/icons-material/Groups"
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt"
+
 import * as authService from "../services/authService";
 
 const AdminLayout = () => {
@@ -43,8 +47,17 @@ const AdminLayout = () => {
                         <MedicalServicesIcon />
                         Doctors
                     </NavLink>
+                    <NavLink to="/admin/staffs" className={menuStyle}>
+                        <GroupIcon />
+                        Staffs
+                    </NavLink>
+
+                    <NavLink to="/admin/patients" className={menuStyle}>
+                        <PeopleAltIcon />
+                        Patients
+                    </NavLink>
                     <NavLink to="/admin/services" className={menuStyle}>
-                        <MedicalServicesIcon />
+                        <MiscellaneousServicesIcon />
                         Services
                     </NavLink>
                     <NavLink to="/admin/appointments" className={menuStyle}>

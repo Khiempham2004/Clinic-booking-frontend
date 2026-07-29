@@ -17,6 +17,8 @@ import PatientBookingList from './pages/Patient/PatientBookingList.jsx';
 import PatientProfile from './pages/Patient/PatientProfile.jsx';
 import PatientDoctors from './pages/Patient/PatientDoctors.jsx';
 import PatientHome from './pages/Patient/PatientHome.jsx';
+import AdminStaffs from './pages/Admin/AdminStaffs.jsx';
+import AdminPatient from './pages/Admin/AdminPatient.jsx';
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
         }>
           <Route index element={<AdminDashboard />} />
           <Route path='doctors' element={<AdminDoctors />} />
+          <Route path='staffs' element={<AdminStaffs />} />
+          <Route path='patients' element={<AdminPatient />} />
           <Route path='services' element={<AdminServices />} />
           <Route path='appointments' element={<AdminAppointments />} />
         </Route>
