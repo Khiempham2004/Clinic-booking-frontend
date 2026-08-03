@@ -4,17 +4,18 @@ import appointmentService from '../../services/appointmentService';
 function BookingSummary({ bookingData, setBookingData }) {
     const [loading, setLoading] = useState(false);
     const handleConfirm = async () => {
-        if (!bookingData.doctorId || !bookingData.date || !bookingData.time) {
-            alert('Thông tin chưa đầy đủ. Vui lòng chọn bác sĩ, ngày, giờ và điền thông tin bệnh nhân.');
+        if (
+            !bookingData.doctorId ||
+            !bookingData.date ||
+            !bookingData.time ||
+            !bookingData.patient.name ||
+            !bookingData.patient.phone
+        ) {
+            alert('Thông tin chưa đầy đủ. Vui lòng chọn bác sĩ, ngày, giờ và điền đầy đủ thông tin bệnh nhân.');
             return;
         }
         setLoading(true);
-        const payload = {
-            doctorId: bookingData.doctorId,
-            date: bookingData.date,
-            time: bookingData.time,
-            patient: bookingData.patient
-        };
+        const payload = appointmentService.buildAppointmentPayload(bookingData);
         try {
             const booking = await appointmentService.createAppointment(payload);
             alert('Đặt lịch thành công. Mã: ' + (booking._id || booking.id || 'N/A'));
@@ -26,6 +27,8 @@ function BookingSummary({ bookingData, setBookingData }) {
             setLoading(false);
         }
     };
+
+    
 
     return (
         <div>

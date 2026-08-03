@@ -58,8 +58,6 @@ function App() {
           <Route path='bookings' element={<PatientBookingList />} />
           <Route path='profile' element={<PatientProfile />} />
         </Route>
-
-
       </Routes>
     </BrowserRouter>
   );

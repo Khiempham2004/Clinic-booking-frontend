@@ -139,8 +139,6 @@ const Header = () => {
                         </Link>
                     </div>
 
-                    {/* Mobile Button */}
-
                     <button
                         onClick={() => setOpen(!open)}
                         className="md:hidden p-2 rounded-lg hover:bg-gray-100"
@@ -221,7 +219,8 @@ const Header = () => {
                                     Đăng xuất
                                 </button>
                             </>
-                        )}
+                        )
+                        }
 
                         <Link
                             to="/booking"
